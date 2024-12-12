@@ -1,0 +1,124 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programmer Fun Facts</title>
+    <style>
+        /* styles.css */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .fact-card {
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .category {
+            color: #666;
+            font-size: 0.9em;
+            text-transform: capitalize;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Programmer Fun Facts</h1>
+        <div id="fact-container"></div>
+        <button id="nextFact">Next Fact</button>
+    </div>
+
+    <script>
+        // script.js
+        const programmerFacts = {
+            "programmer_facts": [
+                {
+                    "id": 1,
+                    "fact": "The first computer programmer was a woman named Ada Lovelace, who wrote the first algorithm intended for processing on a computer in the 1840s",
+                    "category": "history"
+                },
+                {
+                    "id": 2,
+                    "fact": "The term 'bug' originated when Grace Hopper found an actual moth in the Harvard Mark II computer in 1947",
+                    "category": "terminology"
+                },
+                {
+                    "id": 3,
+                    "fact": "The average programmer writes only 10-50 lines of production-ready code per day",
+                    "category": "productivity"
+                },
+                {
+                    "id": 4,
+                    "fact": "Programmers spend about 70% of their time reading code rather than writing it",
+                    "category": "work_habits"
+                },
+                {
+                    "id": 5,
+                    "fact": "Python was named after Monty Python's Flying Circus, not the snake",
+                    "category": "programming_languages"
+                },
+                {
+                    "id": 6,
+                    "fact": "The first computer mouse was made of wood",
+                    "category": "hardware"
+                },
+                {
+                    "id": 7,
+                    "fact": "70% of coders learn to program through self-teaching rather than formal education",
+                    "category": "education"
+                },
+                {
+                    "id": 8,
+                    "fact": "Listening to music while coding can increase productivity by up to 20%",
+                    "category": "productivity"
+                }
+            ]
+        };
+
+        let currentFactIndex = 0;
+
+        function displayFact(index) {
+            const factContainer = document.getElementById('fact-container');
+            const fact = programmerFacts.programmer_facts[index];
+            
+            factContainer.innerHTML = `
+                <div class="fact-card">
+                    <div class="fact">${fact.fact}</div>
+                    <div class="category">Category: ${fact.category}</div>
+                </div>
+            `;
+        }
+
+        document.getElementById('nextFact').addEventListener('click', () => {
+            currentFactIndex = (currentFactIndex + 1) % programmerFacts.programmer_facts.length;
+            displayFact(currentFactIndex);
+        });
+
+        // Display first fact when page loads
+        displayFact(currentFactIndex);
+    </script>
+</body>
+</html>
